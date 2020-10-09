@@ -1,0 +1,7 @@
+# Folder Attribute Files
+.DS_Store
+Desktop.ini
+
+# Thumbnail Files
+._*
+Thumbs.db

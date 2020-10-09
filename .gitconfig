@@ -1,0 +1,42 @@
+[alias]
+    st = status
+    br = branch
+    co = checkout
+    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+    tree = log --graph --decorate --oneline --abbrev-commit
+    treenames = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
+    treeall = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    treeallnames = log --graph --decorate --pretty=oneline --abbrev-commit --all --name-status
+    apply-gitignore = !git ls-files -ci --exclude-standard -z | xargs -0 git update-index --assume-unchanged
+    stashdifff = !git diff stash@{0} -- $1
+    stashcof = !git checkout stash@{0} -- $1
+    f = !git fetch origin develop:develop && git checkout develop && git cleanup
+    e = config --global --edit
+    l = config --global --list
+    unstageall = !git diff --name-only --cached | xargs git restore --staged
+    pushup = !git branch --show-current | xargs git push -u origin
+    ie = !code \"$(wslpath -aw "~/.gitignore")\"
+    diffc = diff --cached
+    kdiff = difftool --dir-diff --no-symlinks
+    kdiffc = difftool --dir-diff --cached --no-symlinks
+    diffcommits = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    cleanup = !git remote prune origin && git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d
+    cle = !git ls-files | xargs dos2unix
+[diff]
+    tool = kdiff3
+[difftool "kdiff3"]
+    cmd = kdiff3.exe \"$(wslpath -aw $LOCAL)\" \"$(wslpath -aw $REMOTE)\"
+    keepbackup = false
+    trustExitCode = false
+[merge]
+    tool = kdiff3
+[mergetool "kdiff3"]
+    cmd = kdiff3.exe \"$(wslpath -aw $BASE)\" \"$(wslpath -aw $LOCAL)\" \"$(wslpath -aw $REMOTE)\" -o  \"$(wslpath -aw $MERGED)\"
+    keepbackup = false
+    trustExitCode = false
+[push]
+    default = simple
+[core]
+    editor = code --wait
+    excludesFile = ~/.gitignore

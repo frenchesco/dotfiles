@@ -17,6 +17,9 @@ alias .5='cd ../../../../..'
 alias .6='cd ../../../../../..'
 alias e.='explorer.exe .'
 
+# Other
+alias u='sudo apt-get update && sudo apt-get upgrade'
+
 # Downloading
 d() {
     wget $1 --content-disposition

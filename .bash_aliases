@@ -26,6 +26,7 @@ d() {
 }
 
 # SSH Keys
+alias sshcpk='cat ~/.ssh/id_rsa.pub | clip.exe'
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
   ssh-add

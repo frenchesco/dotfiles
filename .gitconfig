@@ -23,6 +23,7 @@
     diffcommits = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     cleanup = !git remote prune origin && git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d
     cle = !git ls-files | xargs dos2unix
+    amend = commit --amend --no-edit
 [diff]
     tool = kdiff3
 [difftool "kdiff3"]

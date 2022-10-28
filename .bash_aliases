@@ -3,6 +3,7 @@ alias e='code ~/.bashrc'
 alias l='cat ~/.bashrc'
 alias r='source ~/.bashrc'
 alias ea='code ~/.bash_aliases'
+alias la='cat ~/.bash_aliases'
 
 # Windows Apps
 alias subl='subl.exe'

@@ -1,5 +1,6 @@
 # Aliases
 alias e='code ~/.bashrc'
+alias l='cat ~/.bashrc'
 alias r='source ~/.bashrc'
 alias ea='code ~/.bash_aliases'
 
